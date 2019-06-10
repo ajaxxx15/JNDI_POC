@@ -20,5 +20,8 @@ public class Employee {
     private String job;
     private int mgr;
     private int sal;
+
     private int deptno;
 }
+
+//DONT FORGET TO CREATE THE TABLE

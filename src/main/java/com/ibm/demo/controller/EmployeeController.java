@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -25,19 +24,19 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees")
-    public ResponseEntity<Iterable<Employee>> getEmployees(){
+    public ResponseEntity<Iterable<Employee>> getEmployees() {
         Iterable<Employee> allEmployee = employeeService.getAllEmployee();
         return new ResponseEntity<Iterable<Employee>>(allEmployee, HttpStatus.OK);
     }
 
     @GetMapping("/employee/{name}")
-    public ResponseEntity<Employee> getEmployeeByname(@PathVariable String name){
-        return new ResponseEntity<Employee>(employeeService.getEmployeeByName(name),HttpStatus.OK);
+    public ResponseEntity<Employee> getEmployeeByname(@PathVariable String name) {
+        return new ResponseEntity<Employee>(employeeService.getEmployeeByName(name), HttpStatus.OK);
     }
 
     @GetMapping("/employee/{name}/{job}")
-    public ResponseEntity<List> getEmployeeDetails(@PathVariable String name,@PathVariable String job){
-        return new ResponseEntity<List>(employeeService.getEmployeeDetails(name,job),HttpStatus.OK);
+    public ResponseEntity<List> getEmployeeDetails(@PathVariable String name, @PathVariable String job) {
+        return new ResponseEntity<List>(employeeService.getEmployeeDetails(name, job), HttpStatus.OK);
     }
 
 }

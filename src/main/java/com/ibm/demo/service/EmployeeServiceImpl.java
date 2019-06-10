@@ -13,19 +13,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     @Autowired
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository){
-        this.employeeRepository=employeeRepository;
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
     }
-    public Iterable<Employee> getAllEmployee(){
+
+    public Iterable<Employee> getAllEmployee() {
         return employeeRepository.findAll();
 
 
     }
 
     @Override
-    public List getEmployeeDetails(String name,String job) {
-//        System.out.println(employeeRepository.find(name));
-        return employeeRepository.find(name,job);
+    public List getEmployeeDetails(String name, String job) {
+        return employeeRepository.find(name, job);
     }
 
     @Override

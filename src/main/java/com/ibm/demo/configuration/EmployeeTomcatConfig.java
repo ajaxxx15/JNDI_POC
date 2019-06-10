@@ -32,23 +32,23 @@ public class EmployeeTomcatConfig {
                 ContextResource resource = new ContextResource();
                 resource.setName("jdbc/myDataSource");
                 resource.setType(DataSource.class.getName());
-                resource.setProperty("driverClassName", "com.mysql.cj.jdbc.Driver");
-                resource.setProperty("url", "jdbc:mysql://localhost:3306/testdb");
-                resource.setProperty("username", "root");
-                resource.setProperty("password", "root@123");
+                resource.setProperty("driverClassName", "$DRIVER_NAME");
+                resource.setProperty("url", "$DATABASE_URL");
+                resource.setProperty("username", "$USER");
+                resource.setProperty("password", "$PASSWORD");
 
                 context.getNamingResources().addResource(resource);
             }
         };
     }
 
-    @Bean(destroyMethod="")
+    @Bean(destroyMethod = "")
     public DataSource jndiDataSource() throws IllegalArgumentException, NamingException {
         JndiObjectFactoryBean bean = new JndiObjectFactoryBean();
         bean.setJndiName("java:comp/env/jdbc/myDataSource");
         bean.setProxyInterface(DataSource.class);
         bean.setLookupOnStartup(false);
         bean.afterPropertiesSet();
-        return (DataSource)bean.getObject();
+        return (DataSource) bean.getObject();
     }
 }
